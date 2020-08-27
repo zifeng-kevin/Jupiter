@@ -46,6 +46,7 @@ public class Item {
 		return url;
 	}
 	
+	// 因为前段不懂java object所以需要此方法
 	public JSONObject toJSONObject() {
 		JSONObject obj = new JSONObject();
 		obj.put("item_id", itemId);

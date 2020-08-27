@@ -48,6 +48,7 @@ public class SearchItem extends HttpServlet {
 		double lon = Double.parseDouble(request.getParameter("lon"));
 
 		GitHubClient client = new GitHubClient();
+		// 第三个参数是null就是默认为developer
 		List<Item> items = client.search(lat, lon, null);
 
 		MySQLConnection connection = new MySQLConnection();

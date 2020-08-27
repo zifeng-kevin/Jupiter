@@ -30,6 +30,7 @@ public class GitHubClient {
 			keyword = DEFAULT_KEYWORD;
 		}
 		try {
+			// 如果description有类似空格的特殊符号，我们使用encoder可以将其变为+来满足URL的需求
 			keyword = URLEncoder.encode(keyword, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
@@ -76,11 +77,11 @@ public class GitHubClient {
 			String description = getStringFieldOrEmpty(array.getJSONObject(i), "description");
 			
 			if (description.equals("") || description.equals("\n")) {
+				// 没有description就用title代替
 				descriptionList.add(getStringFieldOrEmpty(array.getJSONObject(i), "title"));
 			} else {
 				descriptionList.add(description);
 			}
-
 		}
 		
 		List<List<String>> keywords = MonkeyLearnClient.extractKeywords(descriptionList.toArray(new String[descriptionList.size()]));

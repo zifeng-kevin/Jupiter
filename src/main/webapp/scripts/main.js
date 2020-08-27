@@ -319,6 +319,8 @@
     var element = document.createElement(tag);
     for (var key in options) {
       if (options.hasOwnProperty(key)) {
+    	  // 加全局属性可以直接用[],比如id， classname
+    	  // 加自定义属性则需要element.dataset['haha'] = '3'
         element[key] = options[key];
       }
     }
@@ -375,7 +377,8 @@
 
     // The request parameters
     var url = './search';
-    var params = 'user_id=' + user_id + '&lat=' + lat + '&lon=' + lng;
+    //var params = 'user_id=' + user_id + '&lat=' + lat + '&lon=' + lng;
+    var params = 'user_id=' + user_id + '&lat=37.38' + '&lon=-122.08';
     var data = null;
 
     // display loading message
@@ -390,6 +393,7 @@
           showWarningMessage('No nearby item.');
         } else {
           listItems(items);
+          console.log(items);
         }
       },
       // failed callback

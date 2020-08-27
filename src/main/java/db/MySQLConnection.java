@@ -238,5 +238,4 @@ public class MySQLConnection {
 		}
 		return false;
 	}
-
 }
